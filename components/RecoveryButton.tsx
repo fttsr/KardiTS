@@ -8,9 +8,6 @@ interface RecoveryButtonProps {
 
 const RecoveryButton: React.FC<RecoveryButtonProps> = ({isActive, onPress}) => {
 
-  
-
-
   return (
     <TouchableOpacity 
         style={[styles.button, isActive ? styles.activeButton : styles.inactiveButton]}
@@ -42,10 +39,10 @@ const styles = StyleSheet.create({
       fontSize: 30,
       left: 30,
       alignContent: 'center',
-      fontFamily: 'Montserrat_400Regular',
+      fontFamily: 'Montserrat',
     },
     activeButton: {
-        backgroundColor: 'green',
+        backgroundColor: '#759227',   
     },
     inactiveButton: {
         backgroundColor: '#2C312D'

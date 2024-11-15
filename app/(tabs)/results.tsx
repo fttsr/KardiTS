@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     color: '#FAFAFA',
     fontSize: 36,
-    fontFamily: 'Montserrat_400Regular',
+    fontFamily: 'Montserrat',
     top: '15%',
     left: 15,    
   },

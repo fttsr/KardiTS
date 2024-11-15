@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#FAFAFA',
     fontSize: 36,
-    fontFamily: 'Montserrat_400Regular',
+    fontFamily: 'Montserrat',
     top: '2%',    
   },
 });

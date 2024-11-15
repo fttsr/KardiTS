@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     bottom: -105,
     justifyContent: 'center',
     alignContent: 'center',
-    fontFamily: 'Montserrat_700Bold',
+    fontFamily: 'MontserratBold',
   },
   circle: {
     position: 'absolute',

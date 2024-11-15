@@ -21,6 +21,10 @@ export default function TabTwoScreen() {
   const handleWeightPress = () => {
     setActiveButton('weight');
   }
+  
+  const handleMusclePress = () => {
+    setActiveButton('muscle');
+  }
 
   return (
     <View style={styles.container}>
@@ -30,8 +34,14 @@ export default function TabTwoScreen() {
         isActive={activeButton === 'recovery'} 
         onPress={handleRecoveryPress} 
       />
-      <WeightButton />
-      <MuscleButton />
+      <WeightButton 
+        isActive={activeButton === 'weight'}
+        onPress={handleWeightPress}
+      />
+      <MuscleButton 
+        isActive={activeButton === 'muscle'}
+        onPress={handleMusclePress}
+      />
 
       <Text style={styles.bottomText}>Задайте время{'\n'}тренировки:</Text>
       <Timer />
@@ -57,7 +67,7 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     color: '#FAFAFA',
     fontSize: 36,
-    fontFamily: 'Montserrat_400Regular',
+    fontFamily: 'MontserratBold',
     top: '6%',
     left: 15,    
   },
@@ -66,7 +76,7 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     color: '#FAFAFA',
     fontSize: 32,
-    fontFamily: 'Montserrat_400Regular',
+    fontFamily: 'MontserratBold',
     top: '67%',
     left: 15,    
   }

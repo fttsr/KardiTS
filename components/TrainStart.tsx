@@ -1,3 +1,4 @@
+import { Link } from 'expo-router';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
@@ -5,10 +6,12 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 export default function TrainStart() {
 
   return (
-    <TouchableOpacity style={styles.button}>
-        <View style={styles.circle}/>
-        <Text style={styles.timer}>НАЧАТЬ</Text>
-    </TouchableOpacity>
+    <Link href="/(tabs)/train" asChild>
+      <TouchableOpacity style={styles.button}>
+          <View style={styles.circle}/>
+          <Text style={styles.timer}>НАЧАТЬ</Text>
+      </TouchableOpacity>
+    </Link>
   );
 }
 
@@ -31,7 +34,7 @@ const styles = StyleSheet.create({
         color: '#0F1511',
         fontSize: 32,
         alignContent: 'center',
-        fontFamily: 'Montserrat_400Regular',
+        fontFamily: 'MontserratBold',
     },
     circle: {
         position: 'absolute',

@@ -1,11 +1,18 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
 
+interface MuscleButtonProps {
+    isActive: boolean;
+    onPress: () => void;
+}
 
-export default function MuscleButton() {
+const MuscleButton: React.FC<MuscleButtonProps> = ({isActive, onPress}) => {
 
   return (
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity 
+    style={[styles.button, isActive ? styles.activeButton : styles.inactiveButton]}
+    onPress={onPress}
+    >
         <Image style={styles.icon} source={require('../assets/images/icon_muscle.png')} />
         <Text style={styles.buttonText}>Набор мышечной {'\n'} массы</Text>
     </TouchableOpacity>
@@ -33,7 +40,13 @@ const styles = StyleSheet.create({
       fontSize: 30,
       left: 40,
       alignContent: 'center',
-      fontFamily: 'Montserrat_400Regular',
+      fontFamily: 'Montserrat',
+    },
+    activeButton: {
+        backgroundColor: '#759227',   
+    },
+    inactiveButton: {
+        backgroundColor: '#2C312D'
     },
     icon: {
       width: 81,
@@ -46,3 +59,5 @@ const styles = StyleSheet.create({
   
     }
   });
+
+  export default MuscleButton;

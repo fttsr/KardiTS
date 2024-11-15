@@ -1,11 +1,18 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
 
+interface WeightButtonProps {
+    isActive: boolean;
+    onPress: () => void;
+  }
 
-export default function WeightButton() {
+const WeightButton: React.FC<WeightButtonProps> = ({isActive, onPress}) => {
 
   return (
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity
+    style={[styles.button, isActive ? styles.activeButton : styles.inactiveButton]}
+    onPress={onPress}
+    >
         <Image style={styles.icon} source={require('../assets/images/icon_weight.png')} />
         <Text style={styles.buttonText}>Похудение</Text>
     </TouchableOpacity>
@@ -32,7 +39,13 @@ const styles = StyleSheet.create({
       fontSize: 30,
       left: -10,
       alignContent: 'center',
-      fontFamily: 'Montserrat_400Regular',
+      fontFamily: 'Montserrat',
+    },
+    activeButton: {
+        backgroundColor: '#759227',   
+    },
+    inactiveButton: {
+        backgroundColor: '#2C312D'
     },
     icon: {
       width: 81,
@@ -45,3 +58,5 @@ const styles = StyleSheet.create({
   
     }
   });
+
+  export default WeightButton;

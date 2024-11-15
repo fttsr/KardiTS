@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
       fontSize: 26,
       left: 18,
       alignContent: 'center',
-      fontFamily: 'Montserrat_400Regular',
+      fontFamily: 'Montserrat',
     },
     icon: {
       width: 81,

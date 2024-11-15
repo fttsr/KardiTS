@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     alignContent: 'center',
     left: 18,
-    fontFamily: 'Montserrat_400Regular',
+    fontFamily: 'Montserrat',
   },
 
   icon: {
