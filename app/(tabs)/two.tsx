@@ -1,14 +1,26 @@
 import { StyleSheet } from 'react-native';
 
-import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
+import RecoveryButton from '@/components/RecoveryButton';
+import WeightButton from '@/components/WeightButton';
+import MuscleButton from '@/components/MuscleButton';
+import BtnBg from '@/components/BtnBg';
+import Timer from '@/components/Timer';
+import TrainFree from '@/components/TrainFree';
 
 export default function TabTwoScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/two.tsx" />
+      <Text style={styles.titleText}>Выбор{'\n'}активности:</Text>
+      <BtnBg />
+      <RecoveryButton />
+      <WeightButton />
+      <MuscleButton />
+
+      <Text style={styles.bottomText}>Задайте время{'\n'}тренировки:</Text>
+      <Timer />
+      <TrainFree />
+
     </View>
   );
 }
@@ -16,16 +28,31 @@ export default function TabTwoScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#0F1511',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+  textContainer: {
+    flexDirection: 'row',
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  titleText: {
+    position: 'absolute',
+    textAlign: 'left',
+    color: '#FAFAFA',
+    fontSize: 36,
+    fontFamily: 'Montserrat_400Regular',
+    top: '6%',
+    left: 15,    
   },
+  bottomText: {
+    position: 'absolute',
+    textAlign: 'left',
+    color: '#FAFAFA',
+    fontSize: 32,
+    fontFamily: 'Montserrat_400Regular',
+    top: '67%',
+    left: 15,    
+  }
 });
+
+// Made by Nikita Prosvirkin

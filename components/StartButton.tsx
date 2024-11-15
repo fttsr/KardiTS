@@ -1,15 +1,26 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { Link, useNavigation } from 'expo-router';
+
+
 
 export default function StartButton() {
+    const navigation = useNavigation();
+    
+    const handlePress = () => {
+        console.log("Button Pressed");
+    }
+
   return (
     
-    <TouchableOpacity style={styles.button}>
-      
-        <View style={styles.circle} />
-        <Text style={styles.buttonText}>{'     '}НАЧАТЬ{'\n'}ТРЕНИРОВКУ</Text>
+    <Link href='/(tabs)/two' asChild >
+        <TouchableOpacity style={styles.button} onPress = {handlePress}>
         
-    </TouchableOpacity>
+            <View style={styles.circle} />
+            <Text style={styles.buttonText}>{'     '}НАЧАТЬ{'\n'}ТРЕНИРОВКУ</Text>
+            
+        </TouchableOpacity>
+    </Link>
     
   );
 }
