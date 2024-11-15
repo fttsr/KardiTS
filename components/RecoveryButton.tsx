@@ -1,11 +1,21 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
 
+interface RecoveryButtonProps {
+    isActive: boolean;
+    onPress: () => void;
+  }
 
-export default function RecoveryButton() {
+const RecoveryButton: React.FC<RecoveryButtonProps> = ({isActive, onPress}) => {
+
+  
+
 
   return (
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity 
+        style={[styles.button, isActive ? styles.activeButton : styles.inactiveButton]}
+        onPress={onPress}
+        >
         <Image style={styles.icon} source={require('../assets/images/icon_recovery.png')} />
         <Text style={styles.buttonText}>Восстановление</Text>
     </TouchableOpacity>
@@ -34,6 +44,12 @@ const styles = StyleSheet.create({
       alignContent: 'center',
       fontFamily: 'Montserrat_400Regular',
     },
+    activeButton: {
+        backgroundColor: 'green',
+    },
+    inactiveButton: {
+        backgroundColor: '#2C312D'
+    },
     icon: {
       width: 81,
       height: 81,
@@ -45,3 +61,5 @@ const styles = StyleSheet.create({
   
     }
   });
+
+  export default RecoveryButton;

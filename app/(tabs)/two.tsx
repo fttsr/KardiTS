@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-
+import React, { useState } from 'react';
 import { Text, View } from '@/components/Themed';
 import RecoveryButton from '@/components/RecoveryButton';
 import WeightButton from '@/components/WeightButton';
@@ -10,11 +10,26 @@ import TrainFree from '@/components/TrainFree';
 import TrainStart from '@/components/TrainStart';
 
 export default function TabTwoScreen() {
+
+
+  const [activeButton, setActiveButton] = useState<string | null>(null);
+
+  const handleRecoveryPress = () => {
+    setActiveButton('recovery');
+  }
+
+  const handleWeightPress = () => {
+    setActiveButton('weight');
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>Выбор{'\n'}активности:</Text>
       <BtnBg />
-      <RecoveryButton />
+      <RecoveryButton 
+        isActive={activeButton === 'recovery'} 
+        onPress={handleRecoveryPress} 
+      />
       <WeightButton />
       <MuscleButton />
 
