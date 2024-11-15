@@ -7,6 +7,7 @@ import MuscleButton from '@/components/MuscleButton';
 import BtnBg from '@/components/BtnBg';
 import Timer from '@/components/Timer';
 import TrainFree from '@/components/TrainFree';
+import TrainStart from '@/components/TrainStart';
 
 export default function TabTwoScreen() {
   return (
@@ -20,6 +21,7 @@ export default function TabTwoScreen() {
       <Text style={styles.bottomText}>Задайте время{'\n'}тренировки:</Text>
       <Timer />
       <TrainFree />
+      <TrainStart />
 
     </View>
   );

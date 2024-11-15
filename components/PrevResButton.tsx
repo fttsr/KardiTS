@@ -1,12 +1,15 @@
+import { Link } from 'expo-router';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
 
 export default function PrevResButton() {
   return (
-    <TouchableOpacity style={styles.button}>
-        <Image style={styles.icon} source={require('../assets/images/icon_prevres.png')} />
-        <Text style={styles.buttonText}>Прошлые {'\n'}результаты</Text>
-    </TouchableOpacity>
+    <Link href='/(tabs)/results' asChild >
+        <TouchableOpacity style={styles.button}>
+            <Image style={styles.icon} source={require('../assets/images/icon_prevres.png')} />
+            <Text style={styles.buttonText}>Прошлые {'\n'}результаты</Text>
+        </TouchableOpacity>
+    </Link>
   );
 }
 

@@ -1,17 +1,14 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Image} from 'react-native';
 
 import { Text, View } from '@/components/Themed';
-import StartButton from '@/components/StartButton';
-import PrevResButton from '@/components/PrevResButton';
-import InstrButton from '@/components/InstrButton';
 
-export default function TabOneScreen() {
+
+export default function Results() {
   return (
     <View style={styles.container}>
-      <Text style={styles.titleText}>Привет, Яр!</Text>
-      <StartButton />
-      <PrevResButton />
-      <InstrButton />
+      <Text style={styles.titleText}>Прошлые{'\n'}результаты:</Text>
+      <Image source={require('../../assets/images/results.png')} style={styles.img}/>
+
     </View>
   );
 }
@@ -28,12 +25,16 @@ const styles = StyleSheet.create({
   },
   titleText: {
     position: 'absolute',
-    textAlign: 'center',
+    textAlign: 'left',
     color: '#FAFAFA',
     fontSize: 36,
     fontFamily: 'Montserrat_400Regular',
-    top: '2%',    
+    top: '15%',
+    left: 15,    
   },
+  img: {
+    top: '5%'
+  }
 });
 
 // Made by Nikita Prosvirkin
