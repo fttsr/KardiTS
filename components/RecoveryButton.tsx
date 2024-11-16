@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     inactiveButton: {
         backgroundColor: '#2C312D'
     },
+    
     icon: {
       width: 81,
       height: 81,

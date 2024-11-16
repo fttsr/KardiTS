@@ -26,6 +26,17 @@ export default function TabTwoScreen() {
     setActiveButton('muscle');
   }
 
+
+  const [activeButtonTimer, setActiveButtonTimer] = useState<string | null>(null);
+
+  const handleFreePress = () => {
+    setActiveButtonTimer('free');
+  }
+
+  const handleTimerPress = () => {
+    setActiveButtonTimer('timer');
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>Выбор{'\n'}активности:</Text>
@@ -44,8 +55,14 @@ export default function TabTwoScreen() {
       />
 
       <Text style={styles.bottomText}>Задайте время{'\n'}тренировки:</Text>
-      <Timer />
-      <TrainFree />
+      <Timer
+        isActive={activeButtonTimer === 'timer'}
+        onPress={handleTimerPress} 
+      />
+      <TrainFree 
+        isActive={activeButtonTimer === 'free'}
+        onPress={handleFreePress}
+      />
       <TrainStart />
 
     </View>

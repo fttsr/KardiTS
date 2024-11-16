@@ -1,13 +1,20 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
 
+interface TimerButtonProps {
+  isActive: boolean;
+  onPress: () => void;
+}
 
-export default function Timer() {
+const Timer: React.FC<TimerButtonProps> = ({isActive, onPress}) => {
 
   return (
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity 
+    style={[styles.button, isActive ? styles.activeButton : styles.inactiveButton]}
+    onPress={onPress}
+    >
         <Text style={styles.buttonText}>Таймер:</Text>
-        <Text style={styles.timer}>0:00</Text>
+        <Text style={[styles.timer, isActive ? styles.activeButtonText : styles.inactiveButtonText]}>0:00</Text>
     </TouchableOpacity>
   );
 }
@@ -34,10 +41,24 @@ const styles = StyleSheet.create({
       alignContent: 'center',
       fontFamily: 'Montserrat_400Regular',
     },
+    activeButton: {
+      backgroundColor: '#759227',   
+    },
+    inactiveButton: {
+        backgroundColor: '#2C312D'
+    },
     timer: {
         color: '#D4FF52',
         fontSize: 26,
         alignContent: 'center',
         fontFamily: 'Montserrat_400Regular',
-    }
+    },
+    activeButtonText: {
+      color: '#FFFFFF',
+    },
+    inactiveButtonText: {
+      color: '#D4FF52',
+    },
   });
+
+  export default Timer;
