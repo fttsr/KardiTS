@@ -1,4 +1,6 @@
 import { StyleSheet } from 'react-native';
+import { StatusBar } from 'react-native';
+import { SafeAreaView } from 'react-native';
 
 import { Text, View } from '@/components/Themed';
 import StartButton from '@/components/StartButton';
@@ -7,12 +9,15 @@ import InstrButton from '@/components/InstrButton';
 
 export default function TabOneScreen() {
   return (
-    <View style={styles.container}>
+    <>
+      <StatusBar hidden/>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.titleText}>Привет, Яр!</Text>
       <StartButton />
       <PrevResButton />
       <InstrButton />
-    </View>
+    </SafeAreaView>
+    </>
   );
 }
 
@@ -32,7 +37,7 @@ const styles = StyleSheet.create({
     color: '#FAFAFA',
     fontSize: 36,
     fontFamily: 'Montserrat',
-    top: '2%',    
+    top: '10%',    
   },
 });
 

@@ -31,14 +31,14 @@ const styles = StyleSheet.create({
       top: '50%',
       borderRadius: 16,
       height: 104,
-      width: 386,
+      width: 340,
   
     },
     buttonText: {
       color: '#FFFFFF',
       textAlign: 'left',
-      fontSize: 30,
-      left: 40,
+      fontSize: 26,
+      left: 45,
       alignContent: 'center',
       fontFamily: 'Montserrat',
     },

@@ -31,13 +31,13 @@ const styles = StyleSheet.create({
       top: '20%',
       borderRadius: 16,
       height: 104,
-      width: 386,
+      width: 340,
   
     },
     buttonText: {
       color: '#FFFFFF',
-      fontSize: 30,
-      left: 30,
+      fontSize: 26,
+      left: 40,
       alignContent: 'center',
       fontFamily: 'Montserrat',
     },

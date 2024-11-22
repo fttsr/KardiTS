@@ -28,11 +28,11 @@ const styles = StyleSheet.create({
       alignSelf: 'center',
       alignItems: 'center',
       justifyContent: 'center',
-      top: '78%',
+      top: '76%',
       left: '3%',
       borderRadius: 16,
       height: 103,
-      width: 189,
+      width: 165,
   
     },
     buttonText: {

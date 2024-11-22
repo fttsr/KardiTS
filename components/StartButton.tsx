@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#D4FF52',
     position: 'absolute',
+    top: 200,
     flexDirection: 'column',
     alignSelf: 'center',
     alignItems: 'center',

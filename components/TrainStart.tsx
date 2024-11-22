@@ -24,10 +24,10 @@ const styles = StyleSheet.create({
       alignSelf: 'center',
       alignItems: 'center',
       justifyContent: 'center',
-      top: '91%',
+      top: '90%',
       borderRadius: 16,
       height: 64,
-      width: 386,
+      width: 340,
   
     },
     timer: {
@@ -38,10 +38,10 @@ const styles = StyleSheet.create({
     },
     circle: {
         position: 'absolute',
-        width: 384,
+        width: 338,
         height: 62,
         borderRadius: 16,
-        borderWidth: 10,
+        borderWidth: 6,
         borderColor: '#2C312D',
         top: 1,
         left: 1,

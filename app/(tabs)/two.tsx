@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     color: '#FAFAFA',
     fontSize: 32,
     fontFamily: 'MontserratBold',
-    top: '67%',
+    top: '65%',
     left: 15,    
   }
 });
