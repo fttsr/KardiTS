@@ -12,12 +12,15 @@ import {
   Device,
 } from "react-native-ble-plx";
 
-const DATA_SERVICE_UUID = "19b10000-e8f2-537e-4f6c-d104768a1214";
-const COLOR_CHARACTERISTIC_UUID = "19b10001-e8f2-537e-4f6c-d104768a1217";
+//19b10000-e8f2-537e-4f6c-d104768a1214
+//19b10001-e8f2-537e-4f6c-d104768a1217
+const DATA_SERVICE_UUID = "0000ffe0-0000-1000-8000-00805f9b34fb";
+const COLOR_CHARACTERISTIC_UUID = "0000ffe1-0000-1000-8000-00805f9b34fb";
 
 const bleManager = new BleManager();
 
 function useBLE() {
+  const [heartRate, setHeartRate] = useState<number | null>(null);
   const [allDevices, setAllDevices] = useState<Device[]>([]);
   const [connectedDevice, setConnectedDevice] = useState<Device | null>(null);
   const [color, setColor] = useState("white");
@@ -127,6 +130,11 @@ function useBLE() {
 
     const colorCode = base64.decode(characteristic.value);
 
+    // ЧСС
+    const heartRateValue = parseInt(colorCode, 10);
+    setHeartRate(heartRateValue);
+
+   
     let color = "white";
     if (colorCode === "B") {
       color = "blue";
@@ -151,11 +159,14 @@ function useBLE() {
     }
   };
 
+  
+
   return {
     connectToDevice,
     allDevices,
     connectedDevice,
     color,
+    heartRate,
     requestPermissions,
     scanForPeripherals,
     startStreamingData,

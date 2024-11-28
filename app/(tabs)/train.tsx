@@ -1,9 +1,10 @@
 import { StyleSheet, Image, SafeAreaView, TouchableOpacity} from 'react-native';
 
 import { Text, View } from '@/components/Themed';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DeviceModal from '@/components/DeviceConnectionModal';
 import useBLE from '@/components/useBLE';
+import Time from '@/components/Time';
 
 
 export default function Train() {
@@ -14,9 +15,9 @@ export default function Train() {
     color,
     requestPermissions,
     scanForPeripherals,
+    heartRate
   } = useBLE();
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
-  const [heartRate, setHeartRate] = useState<number | null>(null);
 
   const scanForDevices = async () => {
     const isPermissionsEnabled = await requestPermissions();
@@ -34,29 +35,45 @@ export default function Train() {
     setIsModalVisible(true);
   };
 
-   // Функция обработки данных о сердечном ритме
-   const onHeartRateUpdate = (value: string) => {
-    // Предположим, что `value` приходит в виде строки байтового массива
-    const heartRateValue = parseInt(value, 10); // преобразуем в число
-    setHeartRate(heartRateValue);
-  };
+
+  const [maxHeartRate, setMaxHeartRate] = useState<number>(0);
   
+  useEffect(() => {
+    if (heartRate !== null && heartRate > maxHeartRate) {
+      setMaxHeartRate(heartRate);
+    }
+  }, [heartRate]);
 
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.titleText}>ТРЕНИРОВКА{'\n'}ЖИРОСЖИГАЮЩАЯ</Text>
       <Text style={styles.Text}>нагрузка в сравнении{'\n'}с нормой 
-        <Text style={styles.highlight}> - 61%</Text>
+        <Text style={styles.highlight}> - 60-80%</Text>
       </Text>
       
       <TouchableOpacity onPress={openModal} style={styles.ctaButton}>
         <Text style={styles.ctaButtonText}>Подключиться к кардиографу</Text>
       </TouchableOpacity>
 
-      {connectedDevice && (
-        <Text style={styles.heartRateText}>
-          ЧСС: {heartRate !== null ? heartRate + ' ударов в минуту' : 'Нет данных'}
-        </Text>
+
+      {/* {connectedDevice && ( */}
+          <View>
+            <View style={styles.button} >
+            <Image style={styles.icon} source={require('../../assets/images/kgrm.png')} />
+              <Text style={styles.buttonText}>
+                  Интервалы ЭКГ:
+                  <Text style={maxHeartRate > 60 && maxHeartRate < 80 ? styles.highlightGreen : styles.highlightRed}>
+                    {maxHeartRate !== null
+                    ? ' ' + maxHeartRate + ' интервалов в минуту' 
+                    : 'Нет данных'}
+                  </Text>
+              </Text>
+          </View>
+            <Time />
+          </View>
+      
+      
+
       )}
 
       <DeviceModal
@@ -79,8 +96,36 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  textContainer: {
-    flexDirection: 'row',
+  button: {
+    flex: 1,
+    backgroundColor: '#2C312D',
+    position: 'absolute',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 150,
+    left: 11.5,
+    borderRadius: 16,
+    height: 133,
+    width: 165,
+  },
+  icon: {
+    width: 334,
+    height: 220,
+    left: -175,
+    top: -300,
+    borderRadius: 16,
+    flex: 1,
+    position: 'absolute',
+    flexDirection: 'column',
+  },
+  buttonText: {
+    color: '#FFFFFF',
+    textAlign: 'left',
+    fontSize: 18,
+    left: 0,
+    alignContent: 'center',
+    fontFamily: 'MontserratBold',
   },
   titleText: {
     position: 'absolute',
@@ -90,6 +135,7 @@ const styles = StyleSheet.create({
     fontFamily: 'MontserratBold',
     top: '10%',
   },
+
   Text: {
     position: 'absolute',
     textAlign: 'center',
@@ -111,36 +157,28 @@ const styles = StyleSheet.create({
     width: 404,
     height: 536,
   },
-  heartRateTitleWrapper: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  heartRateTitleText: {
-    fontSize: 30,
-    fontWeight: "bold",
-    textAlign: "center",
-    marginHorizontal: 20,
-    color: "black",
-  },
-  heartRateText: {
-    fontSize: 25,
-    marginTop: 15,
-  },
   ctaButton: {
     backgroundColor: "#FF6060",
     justifyContent: "center",
     alignItems: "center",
     height: 50,
+    top: '44%',
     marginHorizontal: 20,
     marginBottom: 5,
-    borderRadius: 8,
+    borderRadius: 4,
+    width: 300,
   },
   ctaButtonText: {
     fontSize: 18,
     fontWeight: "bold",
     color: "white",
   },
+  highlightGreen: {
+    color: '#D4FF52',
+  },
+  highlightRed: {
+    color: 'red',
+  }
 });
 
 // Made by Nikita Prosvirkin
